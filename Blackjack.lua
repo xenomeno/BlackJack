@@ -291,7 +291,17 @@ local function Blackjack(max_steps, max_no_improv_steps)
 		end
 	end
 		
-	return policy, step
+	return policy, step, Q
+end
+
+local function CalcVFromQ(Q)
+    local V = {}
+    for s = 0, s_NumStates - 1 do
+        local hit, stick = Q[s][HIT], Q[s][STICK]
+        V[s] = hit > stick and hit or stick
+    end
+    
+    return V
 end
 
 function RunBlackjack()
@@ -301,17 +311,21 @@ function RunBlackjack()
 	end
 
 	local init_policy = GeneratePlayerInitPolicy()
-	local policy, steps = Blackjack(50000000, 20000000)
 	print("Player's Init policy")
 	PrintPolicy(init_policy)
+	local V = EstimateValueFunction(init_policy, 5000000)
+	print("State-value function for initial policy")
+	PrintStateValueFunction(V)
+  
+	local policy, steps, Q = Blackjack(50000000, 20000000)
 	print(string.format("Generated policy in %d steps", steps))
 	PrintPolicy(policy)
 	print("Init Policy Performance: ", TestPolicy(init_policy, 1000000))
 	print("Generated Policy Performance: ", TestPolicy(policy, 1000000))
 	
-	local V = EstimateValueFunction(policy, 50000000)
+	local V = CalcVFromQ(Q)
 	print("State-value function for optimal policy")
 	PrintStateValueFunction(V)
 end
 
---RunBlackjack()
+RunBlackjack()
