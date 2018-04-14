@@ -33,6 +33,21 @@ State-value function for NON-usable ace
 { -0.68 -0.47 -0.44 -0.44 -0.42 -0.41 -0.50 -0.52 -0.53 -0.58  }
 
 
+Player's Init policy
+Usable ace    NON-usable ace
+A2345678910   A2345678910
+SSSSSSSSSS 21 SSSSSSSSSS
+SSSSSSSSSS 20 SSSSSSSSSS
+           19           
+           18           
+           17           
+           16           
+           15           
+           14           
+           13           
+           12           
+           11
+A2345678910   A2345678910
 Init Policy Performance: 	-0.352947
 Monte Carlo ES policy in 50000000 steps
 Usable ace    NON-usable ace
