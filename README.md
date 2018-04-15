@@ -1,6 +1,6 @@
 # BlackJack
 
-Lua implementation of Monte Carlo(Exploring Starts) for the Black Jack version described in the book Reinforcement Learning: An Introduction(Sutton & Barto)
+Lua implementation of Monte Carlo(Exploring Starts), On-Policy and Off-Policy for the Black Jack version described in the book Reinforcement Learning: An Introduction(Sutton & Barto). Added support for single state value estimation via Off-Policy algorithm both using Ordinary and Weighted Sampling.
 
 Sample output from ZeroBrane Lua IDE
 
